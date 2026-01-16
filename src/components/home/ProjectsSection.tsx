@@ -130,7 +130,7 @@ export default function ProjectsSection() {
         {/* Projects Slider */}
         <div
           ref={scrollContainerRef}
-          className="flex gap-2 lg:gap-6 overflow-x-auto pb-4 scrollbar-hide cursor-grab active:cursor-grabbing lg:px-[5rem]"
+          className="flex gap-2 lg:gap-6 overflow-x-auto pb-4 scrollbar-hide cursor-grab overflow-hidden active:cursor-grabbing px-6 lg:px-[60px]"
         >
           {infiniteProjects.map((project, index) => (
             <motion.div
@@ -139,7 +139,7 @@ export default function ProjectsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="flex-shrink-0 w-full lg:w-[555px] group relative project-card pl-4 lg:pl-0"
+              className="flex-shrink-0 w-full md:w-[calc(50%-4px)] lg:w-[calc(33.333%-16px)] group relative project-card"
             >
               <div className="relative h-[350px] lg:h-[380px] overflow-hidden">
                 <img

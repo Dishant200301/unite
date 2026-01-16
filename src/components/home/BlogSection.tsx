@@ -100,10 +100,7 @@ export default function BlogSection() {
               return (
                 <article
                   key={post.id}
-                  className={`flex-shrink-0 group blog-card snap-start ${isLargeCard
-                    ? 'w-[280px] lg:w-[calc(33.333%-16px)]'
-                    : 'w-[280px] lg:w-[calc(33.333%-16px)]'
-                    }`}
+                  className="flex-shrink-0 group blog-card snap-start w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
                 >
                   <Link to={`/blog/${post.slug}`}>
                     {/* Image */}

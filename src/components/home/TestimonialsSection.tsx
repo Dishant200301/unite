@@ -83,8 +83,9 @@ export default function TestimonialsSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <SectionLabel text="OUR TESTIMONIAL" />
-            <h2 className="heading-primary font-bold mt-4 max-w-3xl mx-auto">
+            <div className="flex justify-center">
+              <SectionLabel text="OUR TESTIMONIAL" />
+            </div>            <h2 className="heading-primary font-bold mt-4 max-w-3xl mx-auto">
               Here's What Warm Words<br />Our Clients Say
             </h2>
           </motion.div>
@@ -104,7 +105,7 @@ export default function TestimonialsSection() {
         </motion.blockquote>
 
         {/* Client Avatars - Centered Full Width */}
-        <div className="flex justify-center gap-8 lg:gap-16 flex-wrap">
+        <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-6 lg:gap-8 max-w-lg mx-auto">
           {testimonials.map((client, index) => (
             <motion.div
               key={client.id}

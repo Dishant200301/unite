@@ -21,55 +21,64 @@ import NotFound from "./pages/NotFound";
 import { useEffect } from "react";
 
 const queryClient = new QueryClient();
-// Scroll to top on every route change
+// Scroll to top on every route change with enhanced reliability
 const ScrollToTop = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    // Multiple approaches to ensure scroll to top works reliably
-    window.scrollTo(0, 0);
+    // Disable browser's default scroll restoration to avoid conflict
+    if (window.history.scrollRestoration) {
+      window.history.scrollRestoration = 'manual';
+    }
 
-    // Also try document methods for better browser compatibility
-    if (document.documentElement) {
+    const scrollToTop = () => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "instant" // Use instant to prevent sticky scrolling during transitions
+      });
       document.documentElement.scrollTop = 0;
-    }
-    if (document.body) {
       document.body.scrollTop = 0;
-    }
+    };
 
-    // Force layout recalculation
-    document.body.offsetHeight;
+    // Execute immediately
+    scrollToTop();
+
+    // Also schedule it for slightly later to handle async layout shifts
+    const timeoutId = setTimeout(scrollToTop, 0);
+
+    return () => clearTimeout(timeoutId);
   }, [pathname]);
 
   return null;
 };
 const App = () => (
-    <HelmetProvider>
-        <QueryClientProvider client={queryClient}>
-            <TooltipProvider>
-                <Toaster />
-                <Sonner />
-                <BrowserRouter>
-                    <ScrollToTop />
-                    <Routes>
-                        <Route path="/" element={<Index />} />
-                        <Route path="/about" element={<About />} />
-                        <Route path="/services" element={<Services />} />
-                        <Route path="/services/:slug" element={<ServiceDetail />} />
-                        <Route path="/projects" element={<Projects />} />
-                        <Route path="/projects/:slug" element={<ProjectDetail />} />
-                        <Route path="/products" element={<Products />} />
-                        <Route path="/products/:slug" element={<ProductDetail />} />
-                        <Route path="/blog" element={<Blog />} />
-                        <Route path="/blog/:slug" element={<BlogDetail />} />
-                        <Route path="/contact" element={<Contact />} />
-                        <Route path="*" element={<NotFound />} />
-                    </Routes>
-                    <ScrollToTopButton />
-                </BrowserRouter>
-            </TooltipProvider>
-        </QueryClientProvider>
-    </HelmetProvider>
+  <HelmetProvider>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/services/:slug" element={<ServiceDetail />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/:slug" element={<ProjectDetail />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/products/:slug" element={<ProductDetail />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogDetail />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <ScrollToTopButton />
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </HelmetProvider>
 );
 
 export default App;
