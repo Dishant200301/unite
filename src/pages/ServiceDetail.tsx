@@ -50,22 +50,23 @@ export default function ServiceDetail() {
 
       <section className="py-16 lg:py-24 bg-background">
         <div className="container-luxury">
-          <div className="grid lg:grid-cols-12 gap-12">
-            {/* Sidebar */}
+          <div className="md:grid md:grid-cols-5 lg:grid-cols-12 gap-12">
+            {/* Sidebar Column */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="hidden lg:block lg:col-span-4"
+              className="hidden md:block md:col-span-2 lg:col-span-4"
             >
-              <div className="lg:sticky lg:top-32">
+              {/* Inner Sticky Wrapper */}
+              <div className="md:sticky md:top-32 h-fit">
                 <h3 className="text-2xl lg:text-3xl font-bold text-charcoal mb-6 ml-0">Other Services</h3>
                 <ul className="mb-8 border-t border-gray-100">
                   {services.map((service) => (
                     <li key={service.slug} className="border-b border-gray-100">
                       <Link
                         to={`/services/${service.slug}`}
-                        className={`flex items-center gap-3 py-4 px-5 text-[12px] md:text-[16px] lg:text-[18px] font-bold transition-all duration-300 ${service.slug === slug
+                        className={`flex items-center gap-3 py-4 px-5 text-[12px] md:text-[15px] lg:text-[18px] font-bold transition-all duration-300 ${service.slug === slug
                           ? "bg-[#ba9a67] text-white"
                           : "text-charcoal hover:text-[#C9A961] bg-transparent hover:translate-x-2"
                           }`}
@@ -93,21 +94,21 @@ export default function ServiceDetail() {
 
                     <a
                       href="tel:+0844560789"
-                      className="text-[#ba9a67] text-xl md:text-2xl lg:text-[32px] font-bold mb-6 hover:text-white transition-colors border-b-2 border-[#C9A961] pb-1 shadow-black drop-shadow-md"
+                      className="text-[#ba9a67] text-xl md:text-xl lg:text-[24px] font-bold mb-6 hover:text-white transition-colors border-b-2 border-[#C9A961] pb-1 shadow-black drop-shadow-md"
                     >
                       +(084) 456-0789
                     </a>
 
                     <a
                       href="mailto:support@example.com"
-                      className="text-white text-base md:text-lg lg:text-xl font-bold tracking-wide mb-10 hover:text-[#C9A961] transition-colors shadow-black drop-shadow-md"
+                      className="text-white text-base md:text-[16px] lg:text-xl font-bold tracking-wide mb-10 hover:text-[#C9A961] transition-colors shadow-black drop-shadow-md"
                     >
                       Support@Example.Com
                     </a>
 
                     <Link
                       to="/contact"
-                      className="bg-[#ba9a67] text-white text-md font-bold uppercase tracking-wider px-6 py-4 hover:bg-white hover:text-charcoal transition-all duration-300 flex items-center gap-2 shadow-lg"
+                      className="bg-[#ba9a67] text-white text-md md:text-[12px] lg:text-[16px] font-bold uppercase tracking-wider px-6 md:px-2 lg:px-6 py-4 hover:bg-white hover:text-charcoal transition-all duration-300 flex items-center gap-2 shadow-lg"
                     >
                       CONTACT US
                       <RightIcon className="w-4 h-4" />
@@ -118,12 +119,12 @@ export default function ServiceDetail() {
             </motion.div>
 
             {/* Main Content */}
-            <div className="lg:col-span-8">
+            <div className="md:col-span-3 lg:col-span-8">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="flex flex-col-reverse lg:block"
+                className="flex flex-col lg:block"
               >
                 <div className="mb-0">
                   <img src={currentService.heroImage} alt={currentService.title} className="w-full h-[300px] md:h-[520px] object-cover mb-8" />
@@ -144,10 +145,9 @@ export default function ServiceDetail() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="flex flex-col-reverse md:grid md:grid-cols-2 gap-10 mb-16"
+                className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-10 mb-16"
               >
-                <img src="/assets/images/service_details/Timeless.png" alt={currentService.sections.timelessElegance.title} className="w-full h-[300px] md:h-[450px] object-cover" />
-                <div className="flex flex-col justify-center">
+                <div className="flex flex-col justify-center lg:order-2">
                   <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-charcoal mb-4">{currentService.sections.timelessElegance.title}</h3>
                   <p className="text-[#666] text-sm md:text-[16px] leading-relaxed mb-6">
                     {currentService.sections.timelessElegance.description}
@@ -166,6 +166,7 @@ export default function ServiceDetail() {
                     </p>
                   )}
                 </div>
+                <img src="/assets/images/service_details/Timeless.png" alt={currentService.sections.timelessElegance.title} className="w-full h-[300px] md:h-[450px] object-cover lg:order-1" />
               </motion.div>
 
               {/* Lasting Strength */}
@@ -174,9 +175,9 @@ export default function ServiceDetail() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="grid md:grid-cols-2 gap-10 mb-16"
+                className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-10 mb-16"
               >
-                <div className="flex flex-col justify-center">
+                <div className="flex flex-col justify-center lg:order-1">
                   <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-charcoal mb-4">{currentService.sections.lastingStrength.title}</h3>
                   <p className="text-[#666] text-sm md:text-[16px] leading-relaxed mb-6">
                     {currentService.sections.lastingStrength.description}
@@ -195,7 +196,7 @@ export default function ServiceDetail() {
                     </p>
                   )}
                 </div>
-                <img src="/assets/images/service_details/lasting.png" alt={currentService.sections.lastingStrength.title} className="w-full h-[300px] md:h-[450px] object-cover" />
+                <img src="/assets/images/service_details/lasting.png" alt={currentService.sections.lastingStrength.title} className="w-full h-[300px] md:h-[450px] object-cover lg:order-2" />
               </motion.div>
 
               {/* Expert Guidance */}
@@ -220,7 +221,7 @@ export default function ServiceDetail() {
                 transition={{ duration: 0.8 }}
               >
                 <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-charcoal mb-4">Frequently Asked Questions</h3>
-                <div className="w-full h-px bg-gray-200 mb-6"></div>
+                <div className="w-full h-px bg-gray-200 mb-0"></div>
                 <div className="">
                   {currentService.faqs.map((faq, index) => (
                     <div key={index} className="border-b border-gray-200">

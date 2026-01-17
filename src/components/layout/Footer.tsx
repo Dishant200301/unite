@@ -79,7 +79,7 @@ export default function Footer() {
               Quick Links
             </h3>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-0">
+            <div className="grid grid-cols-2 md:grid-cols-2 gap-x-8 gap-y-0 text-center md:text-center lg:text-left">
               {/* Left List */}
               <ul className="space-y-3">
                 {["About Us", "Services", "Our Team", "Blog", "Contact Us"].map((item) => (
@@ -95,7 +95,7 @@ export default function Footer() {
               </ul>
 
               {/* Right List - Starts with "Our Product" behaving like a header/item */}
-              <div className="mt-8 md:mt-0">
+              <div className="mt-0 md:mt-0">
                 <ul className="space-y-3">
                   {/* Pseudo-header item */}
                   <li>

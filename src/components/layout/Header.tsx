@@ -79,9 +79,9 @@ export default function Header() {
           <div className="hidden xl:flex items-center gap-6">
             <div className="flex items-center gap-3">
               <Phone className="w-5 h-5 text-white" />
-              <div className="text-right">
-                <p className="text-white/70 text-[11px] font-light">Call Us Phone</p>
-                <p className="text-gold text-[14px] font-light">+(480) 123 678 900</p>
+              <div className="text-left">
+                <p className="text-white/70 text-[14px] font-normal">Call Us Phone</p>
+                <p className="text-gold text-[16px] font-bold">+(480) 123 678 900</p>
               </div>
             </div>
             <Link

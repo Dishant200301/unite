@@ -86,9 +86,9 @@ export default function BlogDetail() {
       {/* Main Content */}
       <section className="py-16 lg:py-24 bg-background">
         <div className="container-luxury">
-          <div className="grid lg:grid-cols-[1fr_380px] gap-12 xl:gap-16">
-            {/* Mobile Search - Visible on Mobile & Tablet */}
-            <div className="block lg:hidden lg:mb-8 lg:border-b lg:border-border lg:pb-8">
+          <div className="grid md:grid-cols-1 lg:grid-cols-[1fr_380px] gap-12 xl:gap-16">
+            {/* Mobile Search - Visible on Mobile ONLY */}
+            <div className="block md:hidden lg:mb-8 lg:border-b lg:border-border lg:pb-8">
               <h4 className="text-xl font-bold text-charcoal mb-4">Search</h4>
               <div className="relative">
                 <input
@@ -287,7 +287,7 @@ export default function BlogDetail() {
             </motion.article>
 
             {/* Right Column - Sidebar */}
-            <aside className="lg:sticky lg:top-24 lg:self-start space-y-8">
+            <aside className="space-y-8 md:hidden lg:block lg:sticky lg:top-24 lg:self-start">
               {/* Search */}
               <motion.div
                 initial={{ opacity: 0, x: 30 }}
@@ -376,6 +376,7 @@ export default function BlogDetail() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.3 }}
+                className="hidden md:block"
               >
                 <h4 className="text-xl font-bold text-charcoal mb-4">
                   Popular Tags

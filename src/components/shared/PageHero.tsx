@@ -37,10 +37,10 @@ export default function PageHero({
           transition={{ duration: 0.8 }}
           className="relative text-center px-4"
         >
-          <h1 className="text-3xl md:text-6xl font-bold mb-4 tracking-wide text-white">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-wide text-white">
             {title}
           </h1>
-          <nav className="flex flex-wrap items-center justify-center gap-2 text-[16px] font-bold uppercase tracking-widest text-white">
+          <nav className="flex flex-wrap items-center justify-center gap-2 text-[14px] md:text-[16px] font-bold uppercase tracking-widest text-white">
             {breadcrumbs.map((crumb, index) => (
               <span key={crumb.label} className="flex items-center gap-2">
                 {crumb.path ? (

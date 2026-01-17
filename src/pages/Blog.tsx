@@ -131,44 +131,45 @@ export default function Blog() {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   className="group"
                 >
-                  <div className="w-full md:w-[93%] h-[300px] md:h-[460px] overflow-hidden mb-6">
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      className="w-full h-full object-cover transition-transform duration-700"
-                    />
-                  </div>
-
-                  <div className="flex flex-wrap items-center gap-4 text-[13px] mb-3 font-light">
-                    <div className="flex gap-2">
-                      {post.tags.map((tag, i) => (
-                        <span key={tag} className="text-gold uppercase tracking-wider">
-                          {tag}{i < post.tags.length - 1 && ", "}
-                        </span>
-                      ))}
+                  <Link to={`/blog/${post.slug}`} className="block">
+                    <div className="w-full md:w-[93%] h-[300px] md:h-[460px] overflow-hidden mb-6">
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-full object-cover transition-transform duration-700"
+                      />
                     </div>
-                    <span className="text-[#e5e5e5]">|</span>
-                    <span className="text-[#666666] font-normal">{post.date}</span>
-                    <span className="text-[#e5e5e5]">|</span>
-                    <span className="text-[#666666] font-normal">{post.comments} Comments</span>
-                  </div>
 
-                  <h2 className="text-2xl md:text-[32px] leading-[1.2] font-bold text-[#1a1a1a] mb-4 hover:text-gold transition-colors">
-                    <Link to={`/blog/${post.slug}`}>{post.title}</Link>
-                  </h2>
+                    <div className="flex flex-wrap items-center gap-4 text-[13px] mb-3 font-light">
+                      <div className="flex gap-2">
+                        {post.tags.map((tag, i) => (
+                          <span key={tag} className="text-gold uppercase tracking-wider">
+                            {tag}{i < post.tags.length - 1 && ", "}
+                          </span>
+                        ))}
+                      </div>
+                      <span className="text-[#e5e5e5]">|</span>
+                      <span className="text-[#666666] font-normal">{post.date}</span>
+                      <span className="text-[#e5e5e5]">|</span>
+                      <span className="text-[#666666] font-normal">{post.comments} Comments</span>
+                    </div>
 
-                  <p className="text-[#666666] leading-[26px] mb-6 max-w-[95%] font-light">
-                    {post.excerpt}
-                  </p>
+                    <h2 className="text-2xl md:text-[32px] leading-[1.2] font-bold text-[#1a1a1a] mb-4 hover:text-gold transition-colors">
+                      <span>{post.title}</span>
+                    </h2>
 
-                  <Link
-                    to={`/blog/${post.slug}`}
-                    className="group inline-flex items-center gap-2 px-2 py-0.5 rounded-md text-[12.5px] font-bold uppercaset transition-all duration-300 border border-transparent hover:bg-[#ba9a67] hover:text-white text-[#1a1a1a]"
-                  >
-                    READ MORE
-                    <span className="flex items-center justify-center w-6 h-6 bg-[#ba9a67] text-white rounded-[4px] transition-colors group-hover:bg-[#ba9a67] group-hover:text-white">
-                      <RightIcon />
-                    </span>
+                    <p className="text-[#666666] leading-[26px] mb-6 max-w-[95%] font-light">
+                      {post.excerpt}
+                    </p>
+
+                    <div
+                      className="group inline-flex items-center gap-2 px-2 py-0.5 rounded-md text-[12.5px] font-bold uppercaset transition-all duration-300 border border-transparent hover:bg-[#ba9a67] hover:text-white text-[#1a1a1a]"
+                    >
+                      READ MORE
+                      <span className="flex items-center justify-center w-6 h-6 bg-[#ba9a67] text-white rounded-[4px] transition-colors group-hover:bg-[#ba9a67] group-hover:text-white">
+                        <RightIcon />
+                      </span>
+                    </div>
                   </Link>
                 </motion.article>
               ))
