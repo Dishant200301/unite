@@ -62,7 +62,7 @@ export default function StonesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: (index % 10) * 0.05 }}
-              className="flex-shrink-0 w-[160px] lg:w-[180px]"
+              className="flex-shrink-0 w-[120px] lg:w-[180px]"
             >
               <div className="w-full aspect-square mb-4 overflow-hidden">
                 <img

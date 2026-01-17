@@ -20,7 +20,13 @@ export default function AwardsSection() {
       <div className="container-luxury">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Left Column */}
-          <div className="md:hidden lg:block lg:col-span-4">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="md:hidden lg:block lg:col-span-4"
+          >
             <img
               src="/assets/images/home/Awards.jpg"
               alt="Showroom"
@@ -33,10 +39,16 @@ export default function AwardsSection() {
               Marble & Tiles has been recognized for the quality and craftsmanship
               that defines our natural stone collections for luxury interiors.
             </p>
-          </div>
+          </motion.div>
 
           {/* Right Column */}
-          <div className="lg:col-span-8">
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            className="lg:col-span-8"
+          >
             <div className="flex justify-center md:justify-start">
               <SectionLabel text="AWARDS AND RECOGNITION" />
             </div>
@@ -83,7 +95,7 @@ export default function AwardsSection() {
                 </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
 import { Search, ChevronLeft, ChevronRight } from "lucide-react";
@@ -56,7 +57,12 @@ export default function BlogDetail() {
           />
           <div className="absolute inset-0 bg-black/60" />
         </div>
-        <div className="relative text-center container-luxury w-full">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative text-center container-luxury w-full"
+        >
           <nav className="flex items-center justify-center gap-2 text-white/90 text-[13px] font-bold uppercase tracking-wide flex-wrap">
             <Link to="/" className="hover:text-gold transition-colors">
               Home
@@ -74,7 +80,7 @@ export default function BlogDetail() {
               {blog.title}
             </span>
           </nav>
-        </div>
+        </motion.div>
       </section>
 
       {/* Main Content */}
@@ -96,7 +102,13 @@ export default function BlogDetail() {
               </div>
             </div>
             {/* Left Column - Blog Content */}
-            <article className="space-y-8">
+            <motion.article
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="space-y-8"
+            >
               {/* Meta Info */}
               <div className="flex flex-col-reverse md:flex-row items-start md:items-center gap-4 text-sm">
                 <div className="flex flex-wrap items-center gap-4">
@@ -272,12 +284,18 @@ export default function BlogDetail() {
                   </button>
                 </form>
               </div>
-            </article>
+            </motion.article>
 
             {/* Right Column - Sidebar */}
             <aside className="lg:sticky lg:top-24 lg:self-start space-y-8">
               {/* Search */}
-              <div className="hidden lg:block border-b border-border pb-8">
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="hidden lg:block border-b border-border pb-8"
+              >
                 <h4 className="text-xl font-bold text-charcoal mb-4">Search</h4>
                 <div className="relative">
                   <input
@@ -289,10 +307,16 @@ export default function BlogDetail() {
                   />
                   <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-gray" />
                 </div>
-              </div>
+              </motion.div>
 
               {/* Categories */}
-              <div className="hidden lg:block border-b border-border pb-8">
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="hidden lg:block border-b border-border pb-8"
+              >
                 <h4 className="text-xl font-bold text-charcoal mb-4">
                   Categories
                 </h4>
@@ -308,10 +332,16 @@ export default function BlogDetail() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
 
               {/* Recent Posts */}
-              <div className="border-b border-border pb-8">
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="border-b border-border pb-8"
+              >
                 <h4 className="text-xl font-bold text-charcoal mb-4">
                   Recent Posts
                 </h4>
@@ -338,10 +368,15 @@ export default function BlogDetail() {
                     </Link>
                   ))}
                 </div>
-              </div>
+              </motion.div>
 
               {/* Popular Tags */}
-              <div>
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
                 <h4 className="text-xl font-bold text-charcoal mb-4">
                   Popular Tags
                 </h4>
@@ -355,7 +390,7 @@ export default function BlogDetail() {
                     </span>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             </aside>
           </div>
         </div>

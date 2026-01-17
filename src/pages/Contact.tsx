@@ -1,6 +1,7 @@
 
 
 import { Helmet } from "react-helmet-async";
+import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import Newsletter from "@/components/shared/Newsletter";
@@ -29,7 +30,12 @@ export default function Contact() {
         </div>
 
         {/* Center-aligned content */}
-        <div className="relative z-20 text-center px-4 md:px-6 animate-fade-in">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative z-20 text-center px-4 md:px-6"
+        >
           <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-[64px] font-bold text-white mb-3 md:mb-4 tracking-tight">
             Contact Us
           </h1>
@@ -40,7 +46,7 @@ export default function Contact() {
             <span className="text-gold">&gt;</span>
             <span className="text-white font-medium">Contact Us</span>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* 2️⃣ CONTACT INTRO + DETAILS SECTION */}
@@ -48,7 +54,13 @@ export default function Contact() {
         <div className="container-luxury">
 
           {/* FIRST ROW: HEADER & INFO */}
-          <div className="flex flex-col mb-12 md:mb-16 lg:mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="flex flex-col mb-12 md:mb-16 lg:mb-20"
+          >
             {/* TOP LABEL */}
             <SectionLabel text="GET IN TOUCH" />
 
@@ -80,22 +92,34 @@ export default function Contact() {
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* SECOND ROW: IMAGE & FORM */}
           <div className="grid lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12">
 
             {/* LEFT COLUMN (IMAGE) */}
-            <div className="w-full h-full min-h-[300px] md:min-h-[400px] lg:min-h-0 relative">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="w-full h-full min-h-[300px] md:min-h-[400px] lg:min-h-0 relative"
+            >
               <img
                 src="/assets/images/home/contact-image.png"
                 alt="Showroom"
                 className="w-full h-full object-cover rounded-sm"
               />
-            </div>
+            </motion.div>
 
             {/* RIGHT COLUMN (CONTACT FORM) */}
-            <div className="lg:pl-8">
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="lg:pl-8"
+            >
               <h3 className="text-xl md:text-3xl lg:text-4xl font-bold text-[#1a1a1a] mb-2 md:mb-3">How Can We Help You ?</h3>
               <p className="text-xs md:text-sm text-[#666666] mb-6 md:mb-8">Your email address will not be published. Required fields are marked *</p>
 
@@ -148,14 +172,20 @@ export default function Contact() {
                   SEND MESSAGE <ArrowRight className="w-3 md:w-4 h-3 md:h-4" />
                 </button>
               </form>
-            </div>
+            </motion.div>
 
           </div>
         </div>
       </section>
 
       {/* 3️⃣ MAP SECTION */}
-      <section className="w-full h-[300px] md:h-[380px] lg:h-[550px] bg-muted relative">
+      <motion.section
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="w-full h-[300px] md:h-[380px] lg:h-[550px] bg-muted relative"
+      >
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2687.986692637256!2d-117.34685568436806!3d47.65842897918814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x549e18667b930811%3A0x6280435166299867!2s5609%20E%20Sprague%20Ave%2C%20Spokane%20Valley%2C%20WA%2099212%2C%20USA!5e0!3m2!1sen!2s!4v1645564859526!5m2!1sen!2s"
           width="100%"
@@ -165,7 +195,7 @@ export default function Contact() {
           loading="lazy"
           title="Location Map"
         ></iframe>
-      </section>
+      </motion.section>
 
       <Newsletter />
     </Layout>

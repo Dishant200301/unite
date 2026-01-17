@@ -22,21 +22,21 @@ export default function Footer() {
       </div>
 
       {/* Main Content */}
-      <div className="container-luxury relative pt-12 md:pt-20 pb-8 md:pb-12 text-center lg:text-left">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+      <div className="container-luxury relative pt-12 md:pt-20 lg:pt-0 pb-8 md:pb-12 lg:pb-0 text-center lg:text-left">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-0">
 
           {/* Left Column: Brand + Description + Social Icons */}
-          <div className="lg:col-span-4 flex flex-col items-center lg:items-start">
+          <div className="lg:col-span-4 flex flex-col items-center lg:items-start lg:pr-10 lg:border-r border-white/10 lg:pt-20 lg:pb-16">
             {/* Logo & Brand Name */}
             <div className="flex items-center gap-3 mb-6">
               <img src="/assets/logo.png" alt="unita" className="h-9 w-auto" />
-              <span className="text-white text-2xl lg:text-[26px] font-light tracking-wide">
-                unita
+              <span className="text-white text-2xl lg:text-[28px] font-light tracking-wide">
+                unite
               </span>
             </div>
 
             {/* Description */}
-            <p className="text-white/70 text-[15px] leading-[26px] font-light mb-8 max-w-[320px]">
+            <p className="text-white/80 text-[16px] leading-[26px] font-light mb-8 max-w-[320px]">
               Unita, founded in 1998, is a professional and leading manufacturer and Provider for natural stone products, including granites, marbles, slates, sandstones and lime stones from and abroad.
             </p>
 
@@ -74,78 +74,91 @@ export default function Footer() {
           </div>
 
           {/* Middle Columns: Quick Links + Products */}
-          <div className="lg:col-span-4 grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* Quick Links */}
-            <div>
-              <h3 className="text-white text-lg lg:text-[20px] font-semibold mb-6">
-                Quick Links
-              </h3>
+          <div className="lg:col-span-4 lg:px-10 lg:border-r border-white/10 lg:pt-20 lg:pb-16 text-center lg:text-left">
+            <h3 className="text-white text-lg lg:text-[24px] font-bold mb-8">
+              Quick Links
+            </h3>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-0">
+              {/* Left List */}
               <ul className="space-y-3">
                 {["About Us", "Services", "Our Team", "Blog", "Contact Us"].map((item) => (
                   <li key={item}>
                     <Link
                       to="/"
-                      className="text-white/70 text-[15px] font-light hover:text-gold transition-colors"
+                      className="text-white text-[16px] font-bold hover:text-gold transition-colors"
                     >
                       {item}
                     </Link>
                   </li>
                 ))}
               </ul>
-            </div>
 
-            {/* Products */}
-            <div>
-              <h3 className="text-white text-lg lg:text-[20px] font-semibold mb-6">
-                Our Product
-              </h3>
-              <ul className="space-y-3">
-                {["Travertine Bianco", "Calacatta", "Macael White"].map((item) => (
-                  <li key={item}>
+              {/* Right List - Starts with "Our Product" behaving like a header/item */}
+              <div className="mt-8 md:mt-0">
+                <ul className="space-y-3">
+                  {/* Pseudo-header item */}
+                  <li>
                     <Link
                       to="/products"
-                      className="text-white/70 text-[15px] font-light hover:text-gold transition-colors"
+                      className="text-white text-[16px] font-bold hover:text-gold transition-colors"
                     >
-                      {item}
+                      Our Product
                     </Link>
                   </li>
-                ))}
-              </ul>
+                  {/* Product items */}
+                  {["Travertine Bianco", "Calacatta", "Macael White"].map((item) => (
+                    <li key={item}>
+                      <Link
+                        to="/products"
+                        className="text-white text-[15px] font-bold hover:text-gold transition-colors"
+                      >
+                        {item}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
 
           {/* Right Column: Contact Info */}
-          <div className="lg:col-span-4 flex flex-col items-center lg:items-start">
-            {/* Phone */}
-            <a
-              href="tel:+0844560789"
-              className="block text-gold text-xl lg:text-[24px] font-semibold mb-4 hover:underline"
-            >
-              +(084) 456-0789
-            </a>
+          <div className="lg:col-span-4 flex flex-col items-center lg:items-center lg:pt-20 lg:pb-16">
+            <div className="flex flex-col items-center lg:items-start">
+              {/* Phone */}
+              <a
+                href="tel:+0844560789"
+                className="block text-gold text-xl lg:text-[28px] font-semibold mb-4 hover:underline"
+              >
+                +(084) 456-0789
+              </a>
 
-            {/* Email */}
-            <a
-              href="mailto:Support@Example.com"
-              className="block text-white text-xl lg:text-[24px] font-semibold mb-6 hover:text-gold transition-colors"
-            >
-              Support@Example.com
-            </a>
+              {/* Email */}
+              <a
+                href="mailto:Support@Example.com"
+                className="block text-white text-xl lg:text-[28px] font-semibold mb-6 hover:text-gold transition-colors"
+              >
+                Support@Example.com
+              </a>
 
-            {/* Address */}
-            <div className="flex items-start justify-center lg:justify-start gap-3 text-center lg:text-left">
-              <MapPin className="w-5 h-5 text-white/70 mt-1 flex-shrink-0" />
-              <p className="text-white/70 text-[15px] leading-[24px] font-light">
-                2972 Westmer Rd. Santa Ana,<br />Illinois 85486
-              </p>
+              {/* Address */}
+              <div className="flex items-start justify-center lg:justify-start gap-3 text-center lg:text-left">
+                <MapPin className="w-5 h-5 text-white/70 mt-1 flex-shrink-0" />
+                <p className="text-white text-[15px] lg:text-[18px] leading-[24px] font-light">
+                  2972 Westmer Rd. Santa Ana,<br />Illinois 85486
+                </p>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom Copyright */}
-        <div className="mt-16 pt-8 border-t border-white/10">
-          <p className="text-white/60 text-[15px] font-light text-center">
-            © Copyright {new Date().getFullYear()} <span className="text-gold">TryzenIQ</span>. All rights reserved.
+      </div>
+
+      {/* Bottom Copyright */}
+      <div className="relative border-t border-white/10">
+        <div className="container-luxury py-8">
+          <p className="text-white/80 text-[16px] font-bold text-center">
+            © Copyright {new Date().getFullYear()} <a href="https://tryzeniq.com/" target="_blank" rel="noopener noreferrer" className="text-gold hover:underline">TryzenIQ</a>. All rights reserved.
           </p>
         </div>
       </div>

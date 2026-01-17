@@ -1,13 +1,16 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import RightIcon from "@/components/shared/RightIcon";
 
 export default function HeroSection() {
+  const { scrollY } = useScroll();
+  const scale = useTransform(scrollY, [0, 1000], [1, 1.2]);
+
   return (
     <section className="relative h-screen min-h-[550px] md:min-h-[800px] max-h-[1000px] overflow-visible">
       {/* Background */}
-      <div className="absolute inset-0 z-0">
-        <img
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <motion.img
           src="/assets/hero-marble.jpg"
           alt="Luxury marble interior"
           className="w-full h-full object-cover"
@@ -16,7 +19,13 @@ export default function HeroSection() {
       </div>
 
       {/* Large "Marble" Watermark Text - Behind Stone */}
-      <div className="absolute inset-0 hidden lg:flex items-end justify-center pointer-events-none select-none mr-[250px] w-1/2 mx-auto" style={{ zIndex: 5 }}>
+      <motion.div
+        initial={{ x: 100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        className="absolute inset-0 hidden lg:flex items-end justify-center pointer-events-none select-none mr-[250px] w-1/2 mx-auto"
+        style={{ zIndex: 5 }}
+      >
         <span
           className="text-[320px] xl:text-[420px] 2xl:text-[350px] font-[600] leading-none tracking-tight"
           style={{
@@ -29,13 +38,16 @@ export default function HeroSection() {
         >
           Marble
         </span>
-      </div>
+      </motion.div>
 
       {/* Marble Stone - Centered, Overlapping Both Sections */}
-      <img
+      <motion.img
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
         src="/assets/images/home/home-hero-stone.jpg"
         alt=""
-        className="hidden lg:block absolute -bottom-[140px] lg:-bottom-[200px] xl:-bottom-[160px] left-1/2 -translate-x-1/2 w-[320px] lg:w-[480px] xl:w-[350px] z-40 drop-shadow-2xl"
+        className="hidden lg:block absolute -bottom-[140px] lg:-bottom-[140px] xl:-bottom-[140px] left-1/2 -translate-x-1/2 w-[320px] lg:w-[320px] xl:w-[320px] z-40 drop-shadow-2xl"
       />
 
       {/* Content */}
@@ -43,7 +55,7 @@ export default function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="max-w-7xl"
         >
           <h1 className="heading-hero mb-6 mt-16 md:mt-0 font-bold">

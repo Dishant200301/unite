@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import {
   Box,
   Grid3x3,
@@ -63,10 +64,12 @@ export default function ServicesSection() {
         {/* HEADER */}
         <div className="container-luxury mb-10">
           {/* Desktop: Button next to heading */}
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between">
-            <div>
-              <SectionLabel text="WHAT WE OFFER" />
-              <h2 className="heading-primary font-bold mt-4 max-w-xl">
+          <div className="flex flex-col items-center lg:flex-row lg:items-end lg:justify-between">
+            <div className="flex flex-col items-center lg:items-start w-full">
+              <div className="flex justify-center lg:justify-start w-full">
+                <SectionLabel text="WHAT WE OFFER" />
+              </div>
+              <h2 className="heading-primary font-bold mt-4 text-2xl text-center lg:text-left md:text-3xl lg:text-6xl max-w-xl">
                 Providing The Best
                 <br />
                 Marble Services
@@ -75,21 +78,12 @@ export default function ServicesSection() {
 
             <Link
               to="/services"
-              className="btn-primary mt-6 lg:mt-0 hidden lg:inline-flex items-center gap-2 font-bold mb-2"
+              className="btn-primary mt-6 lg:mt-0 inline-flex items-center gap-2 font-bold mb-2 whitespace-nowrap"
             >
               SEE MORE SERVICES
               <RightIcon className="w-4 h-4" />
             </Link>
           </div>
-
-          {/* Mobile & Tablet: button below heading */}
-          <Link
-            to="/services"
-            className="btn-primary mt-6 inline-flex items-center gap-2 font-bold lg:hidden"
-          >
-            SEE MORE SERVICES
-            <RightIcon className="w-4 h-4" />
-          </Link>
         </div>
 
 
@@ -100,9 +94,9 @@ export default function ServicesSection() {
             ref={scrollContainerRef}
             className="
               flex gap-6 overflow-x-auto scrollbar-hide
-              pl-4 sm:pl-6 lg:pl-[5rem]
+              pl-6 sm:pl-6 lg:pl-[4.5rem]
               pr-4 sm:pr-6 lg:pr-[5rem]
-              py-6
+              py-4 md:py-0 overflow-hidden
               cursor-grab active:cursor-grabbing
             "
             onMouseDown={handleMouseDown}
@@ -118,52 +112,60 @@ export default function ServicesSection() {
               const IconComponent = getServiceIcon(service.icon);
 
               return (
-                <Link
+                <motion.div
                   key={`${service.id}-${index}`}
-                  to={`/services/${service.slug}`}
-                  draggable="false"
-                  onClick={(e) => isDragging && e.preventDefault()}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: (index % 5) * 0.1 }}
                   className="
                     flex-shrink-0
                     w-[280px] sm:w-[320px] lg:w-[380px]
-                    card-service group select-none
+                    card-service group select-none overflow-hidden
                   "
                 >
-                  {/* Image */}
-                  <div className="relative h-[200px] lg:h-[260px] overflow-hidden">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      draggable="false"
-                    />
-                    <div className="absolute bottom-0 left-0 w-16 h-16 bg-white flex items-center justify-center">
-                      <IconComponent className="w-7 h-7 text-charcoal" />
+                  <Link
+                    to={`/services/${service.slug}`}
+                    draggable="false"
+                    onClick={(e) => isDragging && e.preventDefault()}
+                    className="flex flex-col h-full"
+                  >
+                    {/* Image */}
+                    <div className="relative h-[200px] lg:h-[260px] overflow-hidden">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        draggable="false"
+                      />
+                      <div className="absolute bottom-0 left-0 w-16 h-16 bg-white flex items-center justify-center">
+                        <IconComponent className="w-7 h-7 text-charcoal" />
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Content */}
-                  <div className="relative p-6 bg-white">
-                    <span className="absolute top-4 right-4 text-[70px] font-light text-light-gray leading-none select-none">
-                      {service.number}
-                    </span>
-
-                    <h3 className="text-[26px] lg:text-[30px] font-bold mb-3 line-clamp-2">
-                      {service.title}
-                    </h3>
-
-                    <p className="text-[15px] lg:text-[16px] mb-4 line-clamp-2">
-                      {service.description}
-                    </p>
-
-                    <div className="inline-flex items-center gap-2 text-[12px] uppercase tracking-wide">
-                      READ MORE
-                      <span className="w-5 h-5 bg-gold flex items-center justify-center">
-                        <RightIcon className="w-3 h-3 text-white" />
+                    {/* Content */}
+                    <div className="relative p-6 bg-white flex-1 overflow-hidden">
+                      <span className="absolute top-4 right-4 text-[70px] font-light text-light-gray leading-none select-none">
+                        {service.number}
                       </span>
+
+                      <h3 className="text-[26px] lg:text-[30px] font-bold mb-3 line-clamp-2">
+                        {service.title}
+                      </h3>
+
+                      <p className="text-[15px] lg:text-[16px] mb-4 line-clamp-2">
+                        {service.description}
+                      </p>
+
+                      <div className="inline-flex items-center gap-2 text-[12px] uppercase tracking-wide">
+                        READ MORE
+                        <span className="w-5 h-5 bg-gold flex items-center justify-center">
+                          <RightIcon className="w-3 h-3 text-white" />
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                </Link>
+                  </Link>
+                </motion.div>
               );
             })}
           </div>

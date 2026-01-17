@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Star, Heart, RefreshCw, Plus, Minus } from "lucide-react";
@@ -80,7 +81,12 @@ export default function ProductDetail() {
         <div className="container-luxury">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Left Column - Product Images */}
-            <div className="space-y-4">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="space-y-4"
+            >
               {/* Main Image */}
               <div className="relative bg-gray-50">
                 <img
@@ -109,10 +115,15 @@ export default function ProductDetail() {
                   ))}
                 </div>
               )}
-            </div>
+            </motion.div>
 
             {/* Right Column - Product Info */}
-            <div className="space-y-5">
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="space-y-5"
+            >
               {/* Brand */}
               <div className="flex items-center gap-2 text-sm">
                 <span className="text-stone-gray">Brand:</span>
@@ -220,11 +231,17 @@ export default function ProductDetail() {
                   <span className="text-gold">{product.brand}</span>
                 </p>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Tabs Section */}
-          <div className="mt-16 border-t border-gray-200 pt-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="mt-16 border-t border-gray-200 pt-10"
+          >
             <div className="flex flex-wrap gap-4 md:gap-8 mb-8 border-b border-gray-200">
               {[
                 { id: "description", label: "Description" },
@@ -297,11 +314,17 @@ export default function ProductDetail() {
                 )}
               </div>
             )}
-          </div>
+          </motion.div>
 
           {/* You May Also Like Section */}
           {mayAlsoLikeProduct && (
-            <div className="mt-16">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="mt-16"
+            >
               <h2 className="text-2xl font-bold text-charcoal mb-8">You May Also Like...</h2>
               <div className="max-w-sm">
                 <Link to={`/products/${mayAlsoLikeProduct.slug}`} className="group block">
@@ -337,12 +360,18 @@ export default function ProductDetail() {
                   </div>
                 </Link>
               </div>
-            </div>
+            </motion.div>
           )}
 
           {/* Related Products */}
           {relatedProductsData.length > 0 && (
-            <div className="mt-16">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="mt-16"
+            >
               <h2 className="text-2xl font-bold text-charcoal mb-8">Related Products</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {relatedProductsData.map((item) => item && (
@@ -384,7 +413,7 @@ export default function ProductDetail() {
                   </Link>
                 ))}
               </div>
-            </div>
+            </motion.div>
           )}
         </div>
       </section>

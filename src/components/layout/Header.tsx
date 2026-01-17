@@ -59,7 +59,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-10">
+          <nav className="hidden xl:flex items-center gap-10">
             {navItems.map((item) => (
               <Link
                 key={item.path}
@@ -76,7 +76,7 @@ export default function Header() {
           </nav>
 
           {/* Right Section */}
-          <div className="hidden lg:flex items-center gap-6">
+          <div className="hidden xl:flex items-center gap-6">
             <div className="flex items-center gap-3">
               <Phone className="w-5 h-5 text-white" />
               <div className="text-right">
@@ -96,7 +96,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden text-white p-2"
+            className="xl:hidden text-white p-2"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6 hidden" /> : <Menu className="w-6 h-6" />}
           </button>

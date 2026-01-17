@@ -41,7 +41,13 @@ export default function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-11 gap-12 lg:gap-0 items-start">
 
           {/* LEFT CONTENT */}
-          <div className="lg:col-span-6">
+          <motion.div
+            initial={{ x: -100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="lg:col-span-6"
+          >
 
             <SectionLabel text="OUR ABOUT US" />
 
@@ -80,10 +86,16 @@ export default function AboutSection() {
               MORE ABOUT US
               <RightIcon />
             </Link>
-          </div>
+          </motion.div>
 
           {/* RIGHT CONTENT */}
-          <div className="lg:col-span-5 relative">
+          <motion.div
+            initial={{ x: 100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="lg:col-span-5 relative"
+          >
 
             {/* EXPERIENCE COUNTER — mobile FIRST */}
             <div ref={counterRefMobile} className="block lg:hidden text-center mt-16">
@@ -138,7 +150,7 @@ export default function AboutSection() {
               alt=""
               className="hidden lg:block absolute -bottom-16 left-0 max-w-[420px]"
             />
-          </div>
+          </motion.div>
 
         </div>
       </div>

@@ -38,10 +38,10 @@ export default function ProcessSection() {
         <div className="grid lg:grid-cols-[40%_60%] gap-12 lg:gap-20 items-start mb-12 lg:mb-24">
 
           {/* LEFT: Unit watermark + floating tiles - Hidden on mobile as per reference flow */}
-          <div className="hidden lg:block relative min-h-[360px]">
+          <div className="relative min-h-[300px] lg:min-h-[360px] mb-12 lg:mb-0">
 
             {/* Unit Watermark with bottom gradient fade */}
-            <div className="hidden lg:block absolute -top-[0px] -left-[40px] pointer-events-none select-none z-0">
+            <div className="absolute -top-[0px] -left-[20px] lg:-left-[40px] pointer-events-none select-none z-0">
               <span
                 className="text-[200px] lg:text-[450px] font-bold leading-none"
                 style={{
@@ -58,18 +58,19 @@ export default function ProcessSection() {
 
             {/* Floating stack of tiles (top-right of Unit) */}
             <motion.img
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.9, ease: "easeOut" }}
+              initial={{ scale: 0.5, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
               viewport={{ once: true }}
               src="/assets/images/home/what-we-do-left-side -image.jpg"
               alt="Marble Tiles Stack"
               className="
         absolute
         top-[40px]
-        left-[300px]
-        lg:left-[360px]
-        w-[180px]
+        left-[40%]
+        lg:left-[260px]
+        xl:left-[360px]
+        w-[140px]
         lg:w-[260px]
         object-contain
         z-10
@@ -133,10 +134,10 @@ export default function ProcessSection() {
           {/* Right: Large Image & Floating Slab */}
           <div className="relative mt-0 lg:mt-0 px-0">
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
             >
               <img
                 src="/assets/images/home/what-we-do-right-side -image-1.jpg"
@@ -146,17 +147,17 @@ export default function ProcessSection() {
             </motion.div>
 
             {/* Floating Slab at Bottom Right - With Arrow Button */}
-            <div className="hidden lg:block absolute -bottom-24 -right-36 z-20">
+            <div className="absolute -bottom-10 -right-4 lg:-bottom-24 lg:-right-36 z-20">
               <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.3 }}
                 className="relative"
               >
                 <img
                   src="/assets/images/home/what-we-do-right-side -image-2.jpg"
                   alt="Raw Stone Slab"
-                  className="w-[280px] lg:w-[500px] object-contain drop-shadow-2xl"
+                  className="w-[180px] lg:w-[500px] object-contain drop-shadow-2xl"
                 />
 
               </motion.div>

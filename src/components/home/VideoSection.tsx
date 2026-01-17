@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useInView, motion } from "framer-motion";
 import { X } from "lucide-react";
 import marbleWarehouse from "/assets/images/home/video-bg-image.png";
 
@@ -9,6 +10,7 @@ const stats = [
 ];
 
 // Counter Animation
+
 function AnimatedCounter({
   end,
   suffix = "",
@@ -19,26 +21,37 @@ function AnimatedCounter({
   duration?: number;
 }) {
   const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   useEffect(() => {
+    if (!isInView) return;
+
     let start: number | null = null;
+    let animationFrameId: number;
 
     const animate = (time: number) => {
       if (!start) start = time;
       const progress = Math.min((time - start) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 4);
       setCount(Math.floor(eased * end));
-      if (progress < 1) requestAnimationFrame(animate);
+      if (progress < 1) {
+        animationFrameId = requestAnimationFrame(animate);
+      }
     };
 
-    requestAnimationFrame(animate);
-  }, [end, duration]);
+    animationFrameId = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    };
+  }, [end, duration, isInView]);
 
   return (
-    <>
+    <span ref={ref}>
       {count}
       {suffix}
-    </>
+    </span>
   );
 }
 
@@ -62,42 +75,52 @@ export default function VideoSection() {
 
         {/* Play Button */}
         <div className="absolute inset-0 top-[-60px] md:top-0 flex items-center justify-center z-20">
-          <button
+          <motion.button
             onClick={() => setIsVideoOpen(true)}
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
             className="w-[80px] h-[80px] md:w-[110px] md:h-[110px] rounded-full bg-[#a6a6a2] hover:bg-[#ba9a67] transition-colors flex items-center justify-center"
           >
             <span className="text-[16px] md:text-[18px] font-bold text-white">
               Play
             </span>
-          </button>
+          </motion.button>
         </div>
 
         {/* Watermark */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-10">
-          <div className="text-center leading-none font-bold tracking-[-0.02em]">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-center leading-none font-bold tracking-[-0.02em]"
+          >
             <div className="text-white/40 text-[70px] sm:text-[100px] md:text-[120px] lg:text-[260px]">
               Marble &
             </div>
             <div className="text-white/15 text-[70px] sm:text-[100px] md:text-[120px] lg:text-[260px]">
               Tiles
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Bottom Fade */}
         <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-black/60 via-black/40 to-transparent pointer-events-none" />
 
         {/* STATS BAR */}
-        <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-200">
+        <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-b border-gray-200">
           <div className="container-luxury">
-            <div className="grid grid-cols-3 md:grid-cols-3">
+            <div className="grid grid-cols-3 md:grid-cols-3 ">
 
               {stats.map((stat, index) => (
                 <div
                   key={stat.label}
                   className={`
                     flex flex-col items-center justify-center
-                    py-4 md:py-12
+                    py-4 md:py-6
                     ${index < stats.length - 1 ? "border-r border-gray-200 md:border-r md:border-gray-200" : ""}
                   `}
                 >

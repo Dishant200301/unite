@@ -67,7 +67,13 @@ const AboutProcessSection = () => {
                 {/* Header Section */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-start mb-0">
                     {/* Left side with "Unit" watermark and Floating Stone */}
-                    <div className="hidden lg:flex lg:col-span-5 relative min-h-[350px] items-center justify-center">
+                    <motion.div
+                        initial={{ x: -100, opacity: 0 }}
+                        whileInView={{ x: 0, opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="hidden lg:flex lg:col-span-5 relative min-h-[350px] items-center justify-center"
+                    >
                         {/* "Unit" Watermark Background */}
                         <div className="hidden lg:flex absolute inset-0 items-start justify-start pointer-events-none select-none overflow-visible z-10">
                             <span
@@ -92,18 +98,27 @@ const AboutProcessSection = () => {
                                 className="w-[260px] lg:w-[300px] object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
                             />
                         </motion.div>
-                    </div>
+                    </motion.div>
 
                     {/* Right side - Header Text */}
-                    <div className="lg:col-span-7 z-10">
+                    <motion.div
+                        initial={{ x: 100, opacity: 0 }}
+                        whileInView={{ x: 0, opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                        className="lg:col-span-7 z-10"
+                    >
                         {/* Label */}
                         <div className="flex justify-center lg:justify-start">
                             <SectionLabel text="WHAT WE DO" />
                         </div>
 
                         {/* Main Heading */}
-                        <h2 className="text-2xl md:text-4xl lg:text-[56px] font-bold text-[#1a1a1a] leading-[1.2] mb-8 tracking-tight text-center lg:text-left">
-                            The Value Is In The Process <br /> For Exceptional.
+                        <h2 className="text-2xl md:text-4xl lg:text-[56px] font-bold text-[#1a1a1a] leading-[1.25] mb-8 tracking-tight text-center lg:text-left">
+                            The Value Is In The Process <br /> 
+                            <div className="text-[#1a1a1a] font-bold leading-[1.25] mb-8 tracking-tight text-center lg:text-left">
+                            For Exceptional.
+                            </div>
                         </h2>
 
                         {/* Description */}
@@ -112,13 +127,20 @@ const AboutProcessSection = () => {
                             guided by our innovative techniques and the skilled hands of our artisans who carefully
                             transform the raw stone into exquisite pieces.
                         </p>
-                    </div>
+                    </motion.div>
                 </div>
 
                 {/* Process Grid - 3 Columns, 2 Rows */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {processData.map((item, index) => (
-                        <div key={item.id} className="min-h-[380px] group">
+                        <motion.div
+                            key={item.id}
+                            initial={{ opacity: 0, y: 50 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: index * 0.1 }}
+                            className="min-h-[380px] group"
+                        >
                             {item.type === "text" ? (
                                 <div
                                     className={`h-full p-10 lg:p-12 flex flex-col justify-start transition-all duration-500 cursor-pointer ${item.variant === "gold"
@@ -154,7 +176,7 @@ const AboutProcessSection = () => {
                                     />
                                 </div>
                             )}
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>

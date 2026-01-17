@@ -1,6 +1,7 @@
 
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import SectionLabel from "@/components/shared/SectionLabel";
 import RightIcon from "./RightIcon";
@@ -16,15 +17,21 @@ export default function Newsletter() {
 
   return (
     <section className="pb-20 pt-0 lg:py-32 bg-white">
-      <div className="container-luxury text-center">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="container-luxury text-center"
+      >
         {/* TOP MICRO LABEL */}
         <div className="flex justify-center mb-2">
           <SectionLabel text="SUBSCRIBE TO THE NEWSLETTER" />
         </div>
 
         {/* MAIN HEADING */}
-        <h2 className="text-3xl md:text-4xl lg:text-[64px] font-bold text-[#1a1a1a] leading-[1.1] mb-6 tracking-tight max-w-[800px] mx-auto">
-          Do You Need Help <br/> Anything?
+        <h2 className="text-3xl md:text-4xl lg:text-[64px] font-bold text-[#1a1a1a] leading-[1.1] mb-6 tracking-tight max-w-4xl mx-auto">
+          Do You Need Help Anything?
         </h2>
 
         {/* DESCRIPTION TEXT */}
@@ -51,11 +58,11 @@ export default function Newsletter() {
               type="submit"
               className="absolute right-0 bottom-3 w-[30px] h-[30px] bg-[#c5a47e] rounded-[2px] flex items-center justify-center hover:opacity-90 transition-opacity"
             >
-              <RightIcon className="text-white"/>
+              <RightIcon className="text-white" />
             </button>
           </div>
         </form>
-      </div>
+      </motion.div>
     </section>
   );
 }

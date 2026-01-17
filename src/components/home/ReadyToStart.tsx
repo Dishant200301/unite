@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import RightIcon from "../shared/RightIcon";
 
 const ReadyToStart = () => {
@@ -8,7 +9,13 @@ const ReadyToStart = () => {
             <div className="container-luxury relative py-20 lg:pt-6 lg:pb-20">
 
                 {/* --- MOBILE VIEW (Matches Reference) --- */}
-                <div className="block lg:hidden">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="block lg:hidden"
+                >
                     {/* Heading with Top/Bottom Borders */}
                     <div className="w-full border-t border-gray-200 py-8 border-b mb-12">
                         <h2 className="text-center font-bold text-[#1a1a1a] text-[34px] md:text-[45px] lg:text-[45px] leading-[0.9] tracking-tighter">
@@ -34,11 +41,17 @@ const ReadyToStart = () => {
                             </span>
                         </Link>
                     </div>
-                </div>
+                </motion.div>
 
 
                 {/* --- DESKTOP VIEW (Preserved Original) --- */}
-                <div className="hidden lg:block">
+                <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="hidden lg:block"
+                >
                     {/* Heading */}
                     <h2 className="text-center font-vend font-bold text-[#262525] text-[clamp(56px,10vw,133px)] leading-[0.86] tracking-[-0.02em]">
                         Ready To Start?
@@ -60,7 +73,7 @@ const ReadyToStart = () => {
                             <RightIcon className="text-white" />
                         </Link>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </section>
     );

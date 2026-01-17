@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import SectionLabel from "@/components/shared/SectionLabel";
 
@@ -20,20 +21,32 @@ const HomeContactSection = () => {
                 <div className="container-luxury relative z-10">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         {/* Left Column: Text */}
-                        <div className="text-white max-w-2xl text-center lg:text-left mx-auto lg:mx-0">
+                        <motion.div
+                            initial={{ x: -50, opacity: 0 }}
+                            whileInView={{ x: 0, opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className="text-white max-w-2xl text-center lg:text-left mx-auto lg:mx-0"
+                        >
                             <h2 className="text-3xl md:text-5xl lg:text-[64px] font-bold leading-[1.1] tracking-tight">
                                 Come as You are And we Will Take Care of the Rest
                             </h2>
-                        </div>
+                        </motion.div>
 
                         {/* Right Column: Contact Form */}
-                        <div className="bg-white p-8 md:p-12 lg:p-16 max-w-xl mx-auto lg:ml-auto w-full shadow-2xl">
+                        <motion.div
+                            initial={{ x: 50, opacity: 0 }}
+                            whileInView={{ x: 0, opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                            className="bg-white p-8 md:p-12 lg:p-16 max-w-xl mx-auto lg:ml-auto w-full shadow-2xl"
+                        >
                             <div className="flex justify-center lg:justify-start">
                                 <SectionLabel text="COMMON QUESTIONS" />
                             </div>
                             <h3 className="text-2xl md:text-4xl font-bold text-[#1a1a1a] mb-10 leading-tight text-center lg:text-left">
                                 Have Questions
-                               
+
                                 Get In Touch
                             </h3>
 
@@ -89,7 +102,7 @@ const HomeContactSection = () => {
                                     </button>
                                 </div>
                             </form>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             </div>
@@ -97,13 +110,19 @@ const HomeContactSection = () => {
             {/* Logos Section */}
             <div className="w-full bg-white border-b border-gray-100 py-12">
                 <div className="container-luxury">
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:flex lg:flex-wrap lg:justify-between items-center gap-8 lg:gap-8 opacity-100 grayscale hover:grayscale-0 transition-all duration-500">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="grid grid-cols-2 md:grid-cols-3 lg:flex lg:flex-wrap lg:justify-between items-center gap-8 lg:gap-8 opacity-100 grayscale hover:grayscale-0 transition-all duration-500"
+                    >
                         <img src="/assets/images/home/brand-icon-1.jpg" alt="Brand 1" className="h-12 w-auto object-contain mx-auto lg:mx-0" />
                         <img src="/assets/images/home/brand-icon-2.jpg" alt="Brand 2" className="h-12 w-auto object-contain mx-auto lg:mx-0" />
                         <img src="/assets/images/home/brand-icon-3.jpg" alt="Brand 3" className="h-12 w-auto object-contain mx-auto lg:mx-0" />
                         <img src="/assets/images/home/brand-icon-4.jpg" alt="Brand 4" className="h-12 w-auto object-contain mx-auto lg:mx-0" />
                         <img src="/assets/images/home/brand-icon-5.jpg" alt="Brand 5" className="h-12 w-auto object-contain mx-auto lg:mx-0 col-span-2 md:col-span-1" />
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>

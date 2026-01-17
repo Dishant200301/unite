@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import { Check, CheckCircle } from "lucide-react";
 import Layout from "@/components/layout/Layout";
@@ -38,7 +39,12 @@ export default function ProjectDetail() {
                         backgroundSize: "cover"
                     }}
                 />
-                <div className="relative z-10 text-center text-white container-luxury w-full">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="relative z-10 text-center text-white container-luxury w-full"
+                >
                     <h1 className="text-2xl md:text-[40px] lg:text-[60px] font-bold mb-2">{project.title}</h1>
                     <div className="flex items-center justify-center gap-2 text-[11px] md:text-[13px] font-bold uppercase tracking-widest">
                         <Link to="/" className="hover:text-gold transition-colors">HOME</Link>
@@ -47,14 +53,21 @@ export default function ProjectDetail() {
                         <span className="text-gold">{">"}</span>
                         <span>PROJECT DETAILS</span>
                     </div>
-                </div>
+                </motion.div>
             </div>
 
             {/* Main Content */}
             <section className="py-16 bg-background overflow-hidden">
                 <div className="container-luxury">
                     {/* Hero Image with Project Overview */}
-                    <div className="relative w-full h-auto lg:h-[700px] mb-20 flex flex-col lg:block">
+                    {/* Hero Image with Project Overview */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="relative w-full h-auto lg:h-[700px] mb-20 flex flex-col lg:block"
+                    >
                         {/* Full Image */}
                         <img
                             src={project.heroImage}
@@ -63,7 +76,13 @@ export default function ProjectDetail() {
                         />
 
                         {/* Project Overview Box - Positioned at bottom-right inside image */}
-                        <div className="relative lg:absolute bottom-0 right-0 bg-white pt-6 md:pt-6 lg:pt-6 p-2 md:p-2 lg:p-8 w-full lg:w-[380px]">
+                        <motion.div
+                            initial={{ opacity: 0, x: 50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.3 }}
+                            className="relative lg:absolute bottom-0 right-0 bg-white pt-6 md:pt-6 lg:pt-6 p-2 md:p-2 lg:p-8 w-full lg:w-[380px]"
+                        >
                             <h3 className="text-[20px] font-bold text-[#1a1a1a] mb-6 pb-4 border-b border-[#e5e5e5]">
                                 Project Overview
                             </h3>
@@ -94,11 +113,17 @@ export default function ProjectDetail() {
                                     <span className="text-[16px] text-[#5e5d5c] font-medium">Completed</span>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </motion.div>
+                    </motion.div>
 
                     {/* Project Overview Section */}
-                    <div className="mb-16">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="mb-16"
+                    >
                         <h2 className="text-3xl md:text-[36px] font-bold text-[#1a1a1a] mb-6">
                             Project Overview
                         </h2>
@@ -109,10 +134,16 @@ export default function ProjectDetail() {
                                 </p>
                             ))}
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Overview & Challenges Section */}
-                    <div className="mb-16">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="mb-16"
+                    >
                         <h2 className="text-3xl md:text-[36px] font-bold text-[#1a1a1a] mb-6">
                             Overview & Challenges
                         </h2>
@@ -129,7 +160,7 @@ export default function ProjectDetail() {
                                 </div>
                             ))}
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Product Gallery Section */}
                     {project.gallery && project.gallery.length > 0 && (
@@ -139,14 +170,21 @@ export default function ProjectDetail() {
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {project.gallery.map((image, index) => (
-                                    <div key={index} className="group relative overflow-hidden aspect-[4/3]">
+                                    <motion.div
+                                        key={index}
+                                        initial={{ opacity: 0, scale: 0.95 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.6, delay: index * 0.1 }}
+                                        className="group relative overflow-hidden aspect-[4/3]"
+                                    >
                                         <img
                                             src={image}
                                             alt={`${project.title} - Image ${index + 1}`}
                                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                         />
                                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-                                    </div>
+                                    </motion.div>
                                 ))}
                             </div>
                         </div>
@@ -162,7 +200,12 @@ export default function ProjectDetail() {
                     </div>
 
                     {/* Explore Recent Projects */}
-                    <div>
+                    <motion.div
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                    >
                         <div className="flex items-center justify-center gap-3 mb-2">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="text-[#ba9a67]">
                                 <path d="M0 0 L0 8 M0 0 L8 0" stroke="currentColor" strokeWidth="3" strokeLinecap="square" />
@@ -202,7 +245,7 @@ export default function ProjectDetail() {
                                 </div>
                             ))}
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </section>
         </Layout>

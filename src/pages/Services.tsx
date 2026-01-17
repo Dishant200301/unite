@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { ArrowRight, Box, Grid3x3, Scissors, Building2, Layers, Hammer, Paintbrush, Settings } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import Newsletter from "@/components/shared/Newsletter";
@@ -34,31 +35,49 @@ export default function Services() {
           />
           <div className="absolute inset-0 bg-black/40" />
         </div>
-        <div className="relative z-10 text-center text-white container-luxury w-full">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative z-10 text-center text-white container-luxury w-full"
+        >
           <h1 className="text-3xl md:text-6xl font-bold mb-4 tracking-wide">Services</h1>
           <div className="flex items-center justify-center gap-2 text-[16px] font-bold uppercase tracking-widest text-white">
             <Link to="/" className="hover:text-[#ba9a67] transition-colors">Home</Link>
             <span className="text-[#ba9a67]">{">"}</span>
             <span className="text-white">Services</span>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Services Grid */}
       <section className="py-20 lg:py-24 bg-[#f9f9f9]">
         <div className="container-luxury">
-          <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
             <div className="flex justify-center mb-3">
               <SectionLabel text="WHAT WE OFFER" />
             </div>
-            <h2 className="text-3xl lg:text-6xl font-bold">
+            <h2 className="text-3xl md:text-3xl lg:text-6xl font-bold">
               Providing The Best<br />Marble Services
             </h2>
-          </div>
+          </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
-            {services.map((service) => (
-              <div key={service.id} className="bg-white group pb-2">
+            {services.map((service, index) => (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="bg-white group pb-2"
+              >
                 {/* Image with Icon */}
                 <div className="relative h-[240px] overflow-hidden mb-8">
                   <img
@@ -99,14 +118,14 @@ export default function Services() {
                     </span>
                   </Link>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Help Section */}
-     <Newsletter/>
+      <Newsletter />
     </Layout>
   );
 }

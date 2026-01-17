@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Layout from "@/components/layout/Layout";
@@ -33,60 +34,78 @@ export default function Projects() {
             backgroundSize: "cover"
           }}
         />
-        <div className="relative z-10 text-center text-white container-luxury w-full">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative z-10 text-center text-white container-luxury w-full"
+        >
           <h1 className="text-4xl md:text-[60px] font-bold mb-2">Projects</h1>
           <div className="flex items-center justify-center gap-2 text-[14px] font-bold uppercase tracking-widest">
             <Link to="/" className="hover:text-[#ba9a67] transition-colors">HOME</Link>
             <span className="text-gold">{">"}</span>
             <span>PROJECTS</span>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Projects Section */}
       <section className="py-24 bg-background">
         <div className="container-luxury">
           {/* Section Header */}
-          <div className="mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mb-16"
+          >
             <SectionLabel text="OUR BEST PROJECTS" />
             <h2 className="text-3xl md:text-[60px] font-bold text-[#1a1a1a] leading-[1] capitalize transition-all duration-400">
               Explore Our Selection<br />
               Our Latest Projects
             </h2>
-          </div>
+          </motion.div>
 
           {/* Projects Grid */}
           <div className="grid md:grid-cols-2 gap-6 mb-16">
-            {currentProjects.map((project) => (
-              <Link
+            {currentProjects.map((project, index) => (
+              <motion.div
                 key={project.id}
-                to={`/projects/${project.slug}`}
-                className="group relative h-[300px] md:h-[450px] overflow-hidden block"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                {/* Project Image */}
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
+                <Link
+                  to={`/projects/${project.slug}`}
+                  className="group relative h-[300px] md:h-[450px] overflow-hidden block"
+                >
+                  {/* Project Image */}
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
 
-                {/* Gradient Overlay - appears on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#545658] via-[#545658]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  {/* Gradient Overlay - appears on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#545658] via-[#545658]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                {/* Content - appears on hover at bottom left */}
-                <div className="absolute bottom-0 left-0 p-8 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                  <h3 className="text-white text-2xl md:text-[28px] font-bold mb-4 leading-[1] hover:text-[#ba9a67]">
-                    {project.title}
-                  </h3>
-                  <div
-                    className="group inline-flex items-center gap-2 px-2 py-0.5 rounded-md text-[12.5px] font-bold uppercaset text-white transition-all duration-300 border border-transparent hover:bg-[#ba9a67] hover:text-white">
-                    READ MORE
-                    <span className="flex items-center justify-center w-6 h-6 bg-[#ba9a67] text-white rounded-[4px]">
-                      <RightIcon />
-                    </span>
+                  {/* Content - appears on hover at bottom left */}
+                  <div className="absolute bottom-0 left-0 p-8 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                    <h3 className="text-white text-2xl md:text-[28px] font-bold mb-4 leading-[1] hover:text-[#ba9a67]">
+                      {project.title}
+                    </h3>
+                    <div
+                      className="group inline-flex items-center gap-2 px-2 py-0.5 rounded-md text-[12.5px] font-bold uppercaset text-white transition-all duration-300 border border-transparent hover:bg-[#ba9a67] hover:text-white">
+                      READ MORE
+                      <span className="flex items-center justify-center w-6 h-6 bg-[#ba9a67] text-white rounded-[4px]">
+                        <RightIcon />
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </motion.div>
             ))}
           </div>
 

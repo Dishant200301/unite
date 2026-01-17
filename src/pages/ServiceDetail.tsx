@@ -52,7 +52,12 @@ export default function ServiceDetail() {
         <div className="container-luxury">
           <div className="grid lg:grid-cols-12 gap-12">
             {/* Sidebar */}
-            <div className="hidden lg:block lg:col-span-4">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="hidden lg:block lg:col-span-4"
+            >
               <div className="lg:sticky lg:top-32">
                 <h3 className="text-2xl lg:text-3xl font-bold text-charcoal mb-6 ml-0">Other Services</h3>
                 <ul className="mb-8 border-t border-gray-100">
@@ -110,11 +115,16 @@ export default function ServiceDetail() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Main Content */}
             <div className="lg:col-span-8">
-              <div className="flex flex-col-reverse lg:block">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="flex flex-col-reverse lg:block"
+              >
                 <div className="mb-0">
                   <img src={currentService.heroImage} alt={currentService.title} className="w-full h-[300px] md:h-[520px] object-cover mb-8" />
                 </div>
@@ -126,10 +136,16 @@ export default function ServiceDetail() {
                     {currentService.description2 && <p>{currentService.description2}</p>}
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Timeless Elegance */}
-              <div className="flex flex-col-reverse md:grid md:grid-cols-2 gap-10 mb-16">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="flex flex-col-reverse md:grid md:grid-cols-2 gap-10 mb-16"
+              >
                 <img src="/assets/images/service_details/Timeless.png" alt={currentService.sections.timelessElegance.title} className="w-full h-[300px] md:h-[450px] object-cover" />
                 <div className="flex flex-col justify-center">
                   <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-charcoal mb-4">{currentService.sections.timelessElegance.title}</h3>
@@ -150,10 +166,16 @@ export default function ServiceDetail() {
                     </p>
                   )}
                 </div>
-              </div>
+              </motion.div>
 
               {/* Lasting Strength */}
-              <div className="grid md:grid-cols-2 gap-10 mb-16">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="grid md:grid-cols-2 gap-10 mb-16"
+              >
                 <div className="flex flex-col justify-center">
                   <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-charcoal mb-4">{currentService.sections.lastingStrength.title}</h3>
                   <p className="text-[#666] text-sm md:text-[16px] leading-relaxed mb-6">
@@ -174,18 +196,29 @@ export default function ServiceDetail() {
                   )}
                 </div>
                 <img src="/assets/images/service_details/lasting.png" alt={currentService.sections.lastingStrength.title} className="w-full h-[300px] md:h-[450px] object-cover" />
-              </div>
+              </motion.div>
 
               {/* Expert Guidance */}
-              <div className="mb-12">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="mb-12"
+              >
                 <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-charcoal mb-4">{currentService.sections.expertGuidance.title}</h3>
                 <p className="text-[#666] text-sm md:text-[16px] leading-relaxed">
                   {currentService.sections.expertGuidance.description}
                 </p>
-              </div>
+              </motion.div>
 
               {/* FAQs */}
-              <div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
                 <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-charcoal mb-4">Frequently Asked Questions</h3>
                 <div className="w-full h-px bg-gray-200 mb-6"></div>
                 <div className="">
@@ -222,7 +255,7 @@ export default function ServiceDetail() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>

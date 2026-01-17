@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { LayoutGrid, List, Star, ChevronDown, ArrowRight } from "lucide-react";
@@ -97,18 +98,16 @@ export default function Products() {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setViewMode("grid")}
-                  className={`p-2 transition-colors ${
-                    viewMode === "grid" ? "text-gold" : "text-stone-gray hover:text-charcoal"
-                  }`}
+                  className={`p-2 transition-colors ${viewMode === "grid" ? "text-gold" : "text-stone-gray hover:text-charcoal"
+                    }`}
                   aria-label="Grid view"
                 >
                   <LayoutGrid size={20} />
                 </button>
                 <button
                   onClick={() => setViewMode("list")}
-                  className={`p-2 transition-colors ${
-                    viewMode === "list" ? "text-gold" : "text-stone-gray hover:text-charcoal"
-                  }`}
+                  className={`p-2 transition-colors ${viewMode === "list" ? "text-gold" : "text-stone-gray hover:text-charcoal"
+                    }`}
                   aria-label="List view"
                 >
                   <List size={20} />
@@ -137,40 +136,51 @@ export default function Products() {
           {/* Grid View */}
           {viewMode === "grid" && (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {currentProducts.map((product) => (
-                <Link
+              {currentProducts.map((product, index) => (
+                <motion.div
                   key={product.id}
-                  to={`/products/${product.slug}`}
-                  className="group"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
-                  <div className="relative aspect-square overflow-hidden mb-4 bg-muted">
-                    {product.isOnSale && product.discount && (
-                      <span className="absolute top-4 left-4 z-10 bg-gold text-white text-xs uppercase px-3 py-1">
-                        Save - {product.discount}%
-                      </span>
-                    )}
-                    <img
-                      src={product.image}
-                      alt={product.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                  <h3 className="text-charcoal text-lg font-light mb-2 group-hover:text-gold transition-colors">
-                    {product.title}
-                  </h3>
-                  {renderStars(product.rating)}
-                  <div className="mt-2 text-sm">{formatPrice(product)}</div>
-                </Link>
+                  <Link
+                    key={product.id}
+                    to={`/products/${product.slug}`}
+                    className="group"
+                  >
+                    <div className="relative aspect-square overflow-hidden mb-4 bg-muted">
+                      {product.isOnSale && product.discount && (
+                        <span className="absolute top-4 left-4 z-10 bg-gold text-white text-xs uppercase px-3 py-1">
+                          Save - {product.discount}%
+                        </span>
+                      )}
+                      <img
+                        src={product.image}
+                        alt={product.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                    <h3 className="text-charcoal text-lg font-light mb-2 group-hover:text-gold transition-colors">
+                      {product.title}
+                    </h3>
+                    {renderStars(product.rating)}
+                    <div className="mt-2 text-sm">{formatPrice(product)}</div>
+                  </Link>
+                </motion.div>
               ))}
             </div>
           )}
 
-          {/* List View */}
           {viewMode === "list" && (
             <div className="space-y-8">
-              {currentProducts.map((product) => (
-                <div
+              {currentProducts.map((product, index) => (
+                <motion.div
                   key={product.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
                   className="flex flex-col md:flex-row gap-6 pb-8 border-b border-border last:border-0"
                 >
                   <Link
@@ -207,7 +217,7 @@ export default function Products() {
                       <ArrowRight size={16} />
                     </Link>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           )}
@@ -222,11 +232,10 @@ export default function Products() {
                     setCurrentPage(page);
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
-                  className={`w-10 h-10 flex items-center justify-center transition-colors ${
-                    currentPage === page
+                  className={`w-10 h-10 flex items-center justify-center transition-colors ${currentPage === page
                       ? "bg-gold text-white"
                       : "bg-muted text-charcoal hover:bg-gold hover:text-white"
-                  }`}
+                    }`}
                 >
                   {page}
                 </button>

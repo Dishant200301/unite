@@ -45,7 +45,7 @@ export default function TestimonialsSection() {
     <section ref={sectionRef} className="relative py-20 lg:py-32 bg-[#f9f9f9]">
       {/* Watermark Container - Clipped to section bounds */}
       <div className="hidden lg:block absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 -top-[100px] flex items-center justify-start">
+        <div className="absolute inset-0 -top-[200px] flex items-center justify-start">
           <h2
             className="text-[180px] lg:text-[380px] font-bold text-[#dfdfdf] leading-none select-none opacity-40 ml-[-50px]"
             style={{

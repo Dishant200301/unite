@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from "react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Layout from "@/components/layout/Layout";
@@ -68,14 +69,19 @@ export default function Blog() {
             backgroundSize: "cover"
           }}
         />
-        <div className="relative z-10 text-center text-white container-luxury w-full">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative z-10 text-center text-white container-luxury w-full"
+        >
           <h1 className="text-4xl md:text-[60px] font-bold mb-2">Blog Standard</h1>
           <div className="flex items-center justify-center gap-2 text-[13px] font-bold uppercase tracking-widest">
             <Link to="/" className="hover:text-gold transition-colors">HOME</Link>
             <span className="text-gold">{">"}</span>
             <span>BLOG STANDARD</span>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <div className="container-luxury py-24">
@@ -116,8 +122,15 @@ export default function Blog() {
 
           <div className="space-y-16">
             {currentPosts.length > 0 ? (
-              currentPosts.map((post) => (
-                <article key={post.id} className="group">
+              currentPosts.map((post, index) => (
+                <motion.article
+                  key={post.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="group"
+                >
                   <div className="w-full md:w-[93%] h-[300px] md:h-[460px] overflow-hidden mb-6">
                     <img
                       src={post.image}
@@ -157,7 +170,7 @@ export default function Blog() {
                       <RightIcon />
                     </span>
                   </Link>
-                </article>
+                </motion.article>
               ))
             ) : (
               <div className="text-center py-20">
@@ -214,7 +227,13 @@ export default function Blog() {
           <aside className="space-y-12 md:sticky md:top-20 self-start">
 
             {/* Search */}
-            <div className="hidden md:block">
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="hidden md:block"
+            >
               <h3 className="text-2xl md:text-[32px] font-bold text-[#1a1a1a] mb-0 relative pb-3 ">
                 Search
               </h3>
@@ -243,10 +262,15 @@ export default function Blog() {
                   )}
                 </button>
               </div>
-            </div>
+            </motion.div>
 
             {/* Categories */}
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
               <h3 className="text-2xl md:text-[32px] font-bold text-[#1a1a1a] mb-6 relative pb-3">
                 Categories
               </h3>
@@ -259,10 +283,15 @@ export default function Blog() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
 
             {/* Recent Posts */}
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               <h3 className="text-2xl md:text-[32px] font-bold text-[#1a1a1a] mb-4 relative pb-3 ">
                 Recent Posts
               </h3>
@@ -281,10 +310,15 @@ export default function Blog() {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Popular Tags */}
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
               <h3 className="text-2xl md:text-[32px] font-bold text-[#1a1a1a] mb-4 relative pb-3 ">
                 Popular Tags
               </h3>
@@ -299,14 +333,20 @@ export default function Blog() {
                   </Link>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
           </aside>
         </div>
       </div>
 
       {/* Do You Need Anything Section */}
-      <section className="py-20 bg-white text-center border-t border-[#f0f0f0]">
+      <motion.section
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="py-20 bg-white text-center border-t border-[#f0f0f0]"
+      >
         <div className="container-luxury">
           <div className="flex justify-center mb-3">
             <SectionLabel text="PREMIUM SUPPORT" />
@@ -331,7 +371,7 @@ export default function Blog() {
             </button>
           </div>
         </div>
-      </section>
+      </motion.section>
     </Layout>
   );
 }
