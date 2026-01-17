@@ -38,7 +38,7 @@ export default function ProcessSection() {
         <div className="grid lg:grid-cols-[40%_60%] gap-12 lg:gap-20 items-start mb-12 lg:mb-24">
 
           {/* LEFT: Unit watermark + floating tiles - Hidden on mobile as per reference flow */}
-          <div className="relative min-h-[300px] lg:min-h-[360px] mb-12 lg:mb-0">
+          <div className="hidden lg:block relative min-h-[300px] lg:min-h-[360px] mb-12 lg:mb-0">
 
             {/* Unit Watermark with bottom gradient fade */}
             <div className="absolute -top-[0px] -left-[20px] lg:-left-[40px] pointer-events-none select-none z-0">
@@ -74,6 +74,7 @@ export default function ProcessSection() {
         lg:w-[260px]
         object-contain
         z-10
+        hidden lg:block
       "
             />
           </div>
@@ -142,7 +143,7 @@ export default function ProcessSection() {
               <img
                 src="/assets/images/home/what-we-do-right-side -image-1.jpg"
                 alt="Factory Processing"
-                className="w-full h-[300px] lg:h-[650px] object-cover"
+                className="w-full h-[300px] lg:h-[650px] object-cover "
               />
             </motion.div>
 
@@ -157,7 +158,7 @@ export default function ProcessSection() {
                 <img
                   src="/assets/images/home/what-we-do-right-side -image-2.jpg"
                   alt="Raw Stone Slab"
-                  className="w-[180px] lg:w-[500px] object-contain drop-shadow-2xl"
+                  className="w-[180px] lg:w-[500px] object-contain drop-shadow-2xl hidden lg:block"
                 />
 
               </motion.div>
