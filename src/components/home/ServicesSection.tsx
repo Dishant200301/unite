@@ -157,10 +157,10 @@ export default function ServicesSection() {
                         {service.description}
                       </p>
 
-                      <div className="inline-flex items-center gap-2 text-[12px] uppercase tracking-wide">
+                      <div className="inline-flex items-center gap-2 px-2 py-0.5 rounded-md text-[12.5px] font-bold uppercase transition-all duration-300 border border-transparent group-hover:bg-[#ba9a67] group-hover:text-white text-[#1a1a1a]">
                         READ MORE
-                        <span className="w-5 h-5 bg-gold flex items-center justify-center">
-                          <RightIcon className="w-3 h-3 text-white" />
+                        <span className="flex items-center justify-center w-6 h-6 bg-[#ba9a67] text-white rounded-[4px] transition-colors">
+                          <RightIcon className="w-3 h-3" />
                         </span>
                       </div>
                     </div>
