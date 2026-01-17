@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import marbleWarehouse from "/assets/marble-warehouse.jpg";
+import { motion } from "framer-motion";
 
 interface PageHeroProps {
   title: string;
@@ -18,9 +19,9 @@ export default function PageHero({
       <Helmet>
         <title>{title} | Marble & Tiles</title>
       </Helmet>
-      <section className="relative h-[300px] md:h-[420px] flex items-center justify-center">
+      <section className="relative h-[400px] flex items-center justify-center bg-black">
         {/* Background */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 z-0">
           <img
             src={backgroundImage}
             alt=""
@@ -30,27 +31,32 @@ export default function PageHero({
         </div>
 
         {/* Content */}
-        <div className="relative text-center px-4">
-          <h1 className="text-2xl md:text-4xl lg:text-[64px] font-bold text-white mb-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative text-center px-4"
+        >
+          <h1 className="text-3xl md:text-6xl font-bold mb-4 tracking-wide text-white">
             {title}
           </h1>
-          <nav className="flex flex-wrap items-center justify-center gap-2 text-white/80 text-xs md:text-[16px] font-bold uppercase tracking-wide">
+          <nav className="flex flex-wrap items-center justify-center gap-2 text-[16px] font-bold uppercase tracking-widest text-white">
             {breadcrumbs.map((crumb, index) => (
               <span key={crumb.label} className="flex items-center gap-2">
                 {crumb.path ? (
-                  <Link to={crumb.path} className="hover:text-gold transition-colors">
+                  <Link to={crumb.path} className="hover:text-[#ba9a67] transition-colors">
                     {crumb.label}
                   </Link>
                 ) : (
                   <span className="text-white">{crumb.label}</span>
                 )}
                 {index < breadcrumbs.length - 1 && (
-                  <span className="text-gold">&gt;</span>
+                  <span className="text-[#ba9a67]">&gt;</span>
                 )}
               </span>
             ))}
           </nav>
-        </div>
+        </motion.div>
       </section>
     </>
   );

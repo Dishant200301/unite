@@ -61,19 +61,27 @@ export default function ProductDetail() {
       </Helmet>
 
       {/* Hero Section with Breadcrumb */}
-      <section className="relative h-[200px] md:h-[320px] flex items-center justify-center bg-black">
+      <section className="relative h-[400px] flex items-center justify-center bg-black">
         <div className="absolute inset-0">
           <img src="/assets/marble-warehouse.jpg" alt="" className="w-full h-full object-cover opacity-40" />
         </div>
-        <div className="container-luxury w-full text-center">
-          <nav className="relative flex items-center justify-center gap-2 text-white/70 text-[11px] font-bold uppercase tracking-wider">
-            <Link to="/" className="hover:text-gold transition-colors">Home</Link>
-            <span>&gt;</span>
-            <Link to="/products" className="hover:text-gold transition-colors">Products</Link>
-            <span>&gt;</span>
-            <span className="text-white">{product.categories[0]}</span>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="container-luxury w-full text-center relative z-10"
+        >
+          <h1 className="text-3xl md:text-6xl font-bold mb-4 tracking-wide text-white">
+            {product.name}
+          </h1>
+          <nav className="relative flex items-center justify-center gap-2 text-white text-[12px] md:text-[16px] font-bold uppercase tracking-widest">
+            <Link to="/" className="hover:text-[#ba9a67] transition-colors">Home</Link>
+            <span className="text-[#ba9a67]">&gt;</span>
+            <Link to="/products" className="hover:text-[#ba9a67] transition-colors">Products</Link>
+            <span className="text-[#ba9a67]">&gt;</span>
+            <span className="text-white line-clamp-1">{product.name}</span>
           </nav>
-        </div>
+        </motion.div>
       </section>
 
       {/* Product Main Section */}

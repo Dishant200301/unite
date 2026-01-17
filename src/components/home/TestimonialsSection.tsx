@@ -42,19 +42,30 @@ export default function TestimonialsSection() {
   const bottomRightX = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
   return (
-    <section ref={sectionRef} className="relative py-20 lg:py-32 bg-[#f9f9f9]">
+    <section
+      ref={sectionRef}
+      className="relative py-20 lg:py-32 "
+      style={{
+        backgroundImage: 'url("/assets/images/home/our-testimonila-bg.png")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
       {/* Watermark Container - Clipped to section bounds */}
       <div className="hidden lg:block absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 -top-[200px] flex items-center justify-start">
-          <h2
-            className="text-[180px] lg:text-[380px] font-bold text-[#dfdfdf] leading-none select-none opacity-40 ml-[-50px]"
-            style={{
-              WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%)',
-              maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%)',
-            }}
-          >
-            clients
-          </h2>
+        <div className="container-luxury h-full relative">
+          <div className="absolute top-[-0px] left-0">
+            <h2
+              className="text-[180px] lg:text-[340px] font-bold ml-6 text-[#e1e1e1] leading-none select-none"
+              style={{
+                WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%)',
+                maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%)',
+              }}
+            >
+              client
+            </h2>
+          </div>
         </div>
       </div>
 
@@ -75,17 +86,23 @@ export default function TestimonialsSection() {
       />
 
       <div className="container-luxury relative z-20">
-        {/* Centered Header */}
-        <div className="flex flex-col items-center text-center mb-16">
+        {/* Header Layout */}
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-10 mb-16">
+          {/* Left Column - Spacer for Watermark Area */}
+          <div className="hidden lg:block" />
+
+          {/* Right Column - Text Content */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="flex flex-col items-center text-center lg:items-start lg:text-left"
           >
-            <div className="flex justify-center">
+            <div className="flex justify-center lg:justify-start w-full">
               <SectionLabel text="OUR TESTIMONIAL" />
-            </div>            <h2 className="heading-primary font-bold mt-4 max-w-3xl mx-auto">
+            </div>
+            <h2 className="heading-primary font-bold  text-[28px] md:text-[32px] lg:text-[50px] mt-4 max-w-2xl">
               Here's What Warm Words<br />Our Clients Say
             </h2>
           </motion.div>
@@ -99,7 +116,7 @@ export default function TestimonialsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="text-xl md:text-2xl lg:text-[22px] font-normal leading-[1.6] text-charcoal max-w-[900px] mx-auto">
+          <p className="text-xl md:text-2xl lg:text-[28px] font-medium leading-[1.6] text-charcoal max-w-[900px] mx-auto">
             “{testimonials[0].content}”
           </p>
         </motion.blockquote>

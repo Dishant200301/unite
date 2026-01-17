@@ -65,7 +65,7 @@ export default function ServiceDetail() {
                     <li key={service.slug} className="border-b border-gray-100">
                       <Link
                         to={`/services/${service.slug}`}
-                        className={`flex items-center gap-3 py-4 px-5 text-base md:text-[18px] font-bold transition-all duration-300 ${service.slug === slug
+                        className={`flex items-center gap-3 py-4 px-5 text-[12px] md:text-[16px] lg:text-[18px] font-bold transition-all duration-300 ${service.slug === slug
                           ? "bg-[#ba9a67] text-white"
                           : "text-charcoal hover:text-[#C9A961] bg-transparent hover:translate-x-2"
                           }`}

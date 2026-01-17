@@ -26,7 +26,7 @@ export default function Services() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative h-[300px] md:h-[60vh] md:min-h-[400px] flex items-center justify-center bg-charcoal overflow-hidden">
+      <section className="relative h-[400px] flex items-center justify-center bg-charcoal overflow-hidden">
         <div className="absolute inset-0">
           <img
             src="/assets/marble-warehouse.jpg"

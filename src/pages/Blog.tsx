@@ -56,7 +56,7 @@ export default function Blog() {
   return (
     <Layout>
       <Helmet>
-        <title>Blog Standard | Marble & Tiles</title>
+        <title>Blog | Marble & Tiles</title>
       </Helmet>
 
       {/* Hero Section */}
@@ -64,7 +64,7 @@ export default function Blog() {
         <div
           className="absolute inset-0 z-0 opacity-60"
           style={{
-            backgroundImage: `url(/assets/about-main.jpg)`,
+            backgroundImage: `url(/assets/marble-warehouse.jpg)`,
             backgroundPosition: "center",
             backgroundSize: "cover"
           }}
@@ -75,11 +75,11 @@ export default function Blog() {
           transition={{ duration: 0.8 }}
           className="relative z-10 text-center text-white container-luxury w-full"
         >
-          <h1 className="text-4xl md:text-[60px] font-bold mb-2">Blog Standard</h1>
-          <div className="flex items-center justify-center gap-2 text-[13px] font-bold uppercase tracking-widest">
-            <Link to="/" className="hover:text-gold transition-colors">HOME</Link>
-            <span className="text-gold">{">"}</span>
-            <span>BLOG STANDARD</span>
+          <h1 className="text-3xl md:text-6xl font-bold mb-4 tracking-wide">Blog </h1>
+          <div className="flex items-center justify-center gap-2 text-[16px] font-bold uppercase tracking-widest text-white">
+            <Link to="/" className="hover:text-[#ba9a67] transition-colors">Home</Link>
+            <span className="text-[#ba9a67]">{">"}</span>
+            <span className="text-white">Blog </span>
           </div>
         </motion.div>
       </div>

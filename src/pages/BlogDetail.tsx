@@ -48,7 +48,7 @@ export default function BlogDetail() {
       </Helmet>
 
       {/* Hero Section with Breadcrumb */}
-      <section className="relative h-[300px] md:h-[350px] flex items-center justify-center">
+      <section className="relative h-[400px] flex items-center justify-center">
         <div className="absolute inset-0">
           <img
             src="/assets/marble-warehouse.jpg"
@@ -63,7 +63,7 @@ export default function BlogDetail() {
           transition={{ duration: 0.8 }}
           className="relative text-center container-luxury w-full"
         >
-          <nav className="flex items-center justify-center gap-2 text-white/90 text-[13px] font-bold uppercase tracking-wide flex-wrap">
+          <nav className="flex items-center justify-center gap-2 text-white/90 text-[12px] md:text-[16px] font-bold uppercase tracking-wide flex-wrap">
             <Link to="/" className="hover:text-gold transition-colors">
               Home
             </Link>

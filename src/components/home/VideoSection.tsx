@@ -113,15 +113,15 @@ export default function VideoSection() {
         {/* STATS BAR */}
         <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-b border-gray-200">
           <div className="container-luxury">
-            <div className="grid grid-cols-3 md:grid-cols-3 ">
+            <div className="grid grid-cols-1 md:grid-cols-3 ">
 
               {stats.map((stat, index) => (
                 <div
                   key={stat.label}
                   className={`
                     flex flex-col items-center justify-center
-                    py-4 md:py-6
-                    ${index < stats.length - 1 ? "border-r border-gray-200 md:border-r md:border-gray-200" : ""}
+                    py-6 md:py-6
+                    ${index < stats.length - 1 ? "border-b md:border-b-0 md:border-r border-gray-200" : ""}
                   `}
                 >
                   <div className="text-[32px] sm:text-[64px] md:text-[70px] lg:text-[80px] font-bold text-[#2a2a2a] leading-none">

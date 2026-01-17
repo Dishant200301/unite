@@ -17,7 +17,7 @@ export default function Contact() {
       </Helmet>
 
       {/* 1️⃣ PAGE HERO SECTION */}
-      <section className="relative w-full h-[280px] md:h-[320px] lg:h-[440px] flex items-center justify-center overflow-hidden">
+      <section className="relative w-full h-[400px] flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
@@ -36,15 +36,15 @@ export default function Contact() {
           transition={{ duration: 0.8 }}
           className="relative z-20 text-center px-4 md:px-6"
         >
-          <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-[64px] font-bold text-white mb-3 md:mb-4 tracking-tight">
+          <h1 className="text-3xl md:text-6xl font-bold mb-4 tracking-wide text-white">
             Contact Us
           </h1>
 
           {/* Breadcrumb */}
-          <div className="flex items-center justify-center gap-2 text-white/80 text-xs md:text-sm uppercase tracking-widest font-light">
-            <Link to="/" className="hover:text-white transition-colors">Home</Link>
-            <span className="text-gold">&gt;</span>
-            <span className="text-white font-medium">Contact Us</span>
+          <div className="flex items-center justify-center gap-2 text-[16px] font-bold uppercase tracking-widest text-white">
+            <Link to="/" className="hover:text-[#ba9a67] transition-colors">Home</Link>
+            <span className="text-[#ba9a67]">{">"}</span>
+            <span className="text-white">Contact Us</span>
           </div>
         </motion.div>
       </section>

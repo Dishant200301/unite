@@ -34,7 +34,7 @@ export default function ProjectDetail() {
                 <div
                     className="absolute inset-0 z-0 opacity-60"
                     style={{
-                        backgroundImage: `url(${project.heroImage})`,
+                        backgroundImage: `url(/assets/marble-warehouse.jpg)`,
                         backgroundPosition: "center",
                         backgroundSize: "cover"
                     }}
@@ -46,13 +46,13 @@ export default function ProjectDetail() {
                     className="relative z-10 text-center text-white container-luxury w-full"
                 >
                     <h1 className="text-2xl md:text-[40px] lg:text-[60px] font-bold mb-2">{project.title}</h1>
-                    <div className="flex items-center justify-center gap-2 text-[11px] md:text-[13px] font-bold uppercase tracking-widest">
+                    <nav className="relative flex items-center justify-center gap-2 pt-4 text-white text-[12px] md:text-[16px] font-bold uppercase tracking-widest">
                         <Link to="/" className="hover:text-gold transition-colors">HOME</Link>
                         <span className="text-gold">{">"}</span>
                         <Link to="/projects" className="hover:text-gold transition-colors">PROJECTS</Link>
                         <span className="text-gold">{">"}</span>
-                        <span>PROJECT DETAILS</span>
-                    </div>
+                        <span className="line-clamp-1">PROJECT DETAILS</span>
+                    </nav>
                 </motion.div>
             </div>
 

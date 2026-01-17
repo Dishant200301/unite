@@ -25,11 +25,11 @@ export default function Projects() {
       </Helmet>
 
       {/* Hero Section */}
-      <div className="relative w-full h-[300px] md:h-[400px] flex items-center justify-center bg-black">
+      <div className="relative w-full h-[400px] flex items-center justify-center bg-black">
         <div
           className="absolute inset-0 z-0 opacity-60"
           style={{
-            backgroundImage: `url(/assets/about-main.jpg)`,
+            backgroundImage: `url(/assets/marble-warehouse.jpg)`,
             backgroundPosition: "center",
             backgroundSize: "cover"
           }}
@@ -40,11 +40,11 @@ export default function Projects() {
           transition={{ duration: 0.8 }}
           className="relative z-10 text-center text-white container-luxury w-full"
         >
-          <h1 className="text-4xl md:text-[60px] font-bold mb-2">Projects</h1>
-          <div className="flex items-center justify-center gap-2 text-[14px] font-bold uppercase tracking-widest">
-            <Link to="/" className="hover:text-[#ba9a67] transition-colors">HOME</Link>
-            <span className="text-gold">{">"}</span>
-            <span>PROJECTS</span>
+          <h1 className="text-3xl md:text-6xl font-bold mb-4 tracking-wide">Projects</h1>
+          <div className="flex items-center justify-center gap-2 text-[16px] font-bold uppercase tracking-widest text-white">
+            <Link to="/" className="hover:text-[#ba9a67] transition-colors">Home</Link>
+            <span className="text-[#ba9a67]">{">"}</span>
+            <span className="text-white">Projects</span>
           </div>
         </motion.div>
       </div>
